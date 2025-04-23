@@ -39,3 +39,41 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
+              TextFormField(
+                controller: passwordController,
+                decoration: const InputDecoration(labelText: 'Password'),
+                obscureText: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomePage()),
+                    );
+                  }
+                },
+                child: const Text('Login'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const RegisterPage()),
+                  );
+                },
+                child: const Text('Belum punya akun? Daftar'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
